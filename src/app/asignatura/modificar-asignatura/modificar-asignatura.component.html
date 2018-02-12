@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-6 col-md-2"></div>
+  <div class="col-6 col-md-8">
+    <div *ngIf="!idCurso; else forminfo">
+      <div class="card-header">
+        <h1>Crear Asignatura</h1>
+        <hr>
+        <div class="card-body">
+          <form [formGroup]="rForm" (ngSubmit)="updateAsignatura(rForm.value)">
+            <div class="form-group">
+              <label for="inputAsignatura">Nombre</label>
+              <input type="text" class="form-control" formControlName="nombre" [value]="asignatura.asignaturas.nombre">
+            </div>
+            <div class="form-group" formArrayName="enfasis">
+              <label for="inputAsignatura">Enfasis</label>
+              <button class="btn btn-secundary float-right" type="button" (click)="addEnfasis()">
+                <i class="fas fa-plus-circle"></i> Añadir</button>
+              <div class="form-group" *ngFor="let retro of rForm.get('enfasis').controls; let i=index">
+                <label for="inputAsignatura">#{{i+1}}</label>
+                <div>
+                  <input type="text" class="form-control" [value]="asignatura.asignaturas.enfasis[i]" [formControlName]="i">
+                </div>
+              </div>
+            </div>
+            <h4>Horas Pedagogicas</h4>
+            <div class="form-group">
+              <label for="inputNivel">Jornada escolar completa (anual)</label>
+              <input type="number" class="form-control" formControlName="horasPedagogicasConJecAnual" [value]="asignatura.asignaturas.horasPedagogicasConJecAnual">
+            </div>
+            <div class="form-group">
+              <label for="inputProfesorJefe">Jornada escolar completa (semanal)</label>
+              <input type="number" class="form-control" formControlName="horasPedagogicasSinJecAnual" [value]="asignatura.asignaturas.horasPedagogicasConJecSemanal">
+            </div>
+            <div class="form-group">
+              <label for="inputSalaCurso">Jornada escolar incompleta (anual)</label>
+              <input type="number" class="form-control" formControlName="horasPedagogicasConJecSemanal" [value]="asignatura.asignaturas.horasPedagogicasSinJecAnual">
+            </div>
+            <div class="form-group">
+              <label for="inputTotalAlumnos">Jornada escolar incompleta (semanal)</label>
+              <input type="number" class="form-control" formControlName="horasPedagogicasSinJecSemanal" [value]="asignatura.asignaturas.horasPedagogicasSinJecSemanal">
+            </div>
+            <input type="reset" class="btn btn-secondary" value="Cancel">
+            <button type="submit" class="btn btn-primary" [disabled]="!rForm.valid">Modificar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-md-2"></div>
+</div>

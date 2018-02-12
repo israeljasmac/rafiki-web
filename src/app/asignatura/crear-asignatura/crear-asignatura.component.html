@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-6 col-md-2"></div>
+  <div class="col-6 col-md-8">
+    <div *ngIf="!idCurso; else forminfo">
+      <div class="card-header">
+        <h1>Crear Asignatura</h1>
+        <hr>
+        <div class="card-body">
+          <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+
+
+            <!-- <div class="col-sm-12" formArrayName="enfasis">
+              <h5>Retroalimentacion
+                <button class="btn btn-secundary col-sm-2 float-right" type="button" (click)="onAddRetro()">
+                  <i class="fas fa-plus-circle"></i> Añadir</button>
+              </h5>
+              <br>
+              <div class="form-group row" *ngFor="let retro of rForm.get('enfasis').controls; let i=index">
+                <label class="col-sm-1 col-form-label">#{{i+1}}</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control form-control col-sm-10" [formControlName]="i">
+                  <!-- <button class="btn btn-secundary col-2" *ngIf="rForm.controls.retroalimentacion.controls.length > 1"><i class="fas fa-trash-alt" (click)=removeRetroalimentacion(i)></i></button>
+                </div>
+              </div>
+            </div> -->
+
+
+            
+
+            <div class="form-group">
+              <label for="inputAsignatura">Nombre</label>
+              <input type="text" class="form-control" placeholder="Ingrese nombre" formControlName="nombre">
+            </div>
+            <div class="form-group" formArrayName="enfasis">
+                <label for="inputAsignatura">Enfasis</label>
+                <button class="btn btn-secundary float-right" type="button" (click)="addEnfasis()">
+                  <i class="fas fa-plus-circle"></i> Añadir</button>
+                <div class="form-group" *ngFor="let retro of rForm.get('enfasis').controls; let i=index">
+                  <label for="inputAsignatura">#{{i+1}}</label>
+                  <div>
+                    <input type="text" class="form-control" placeholder="Ingrese contenido del curso"[formControlName]="i">
+                  </div>
+                </div>
+              </div>
+            <h4>Horas Pedagogicas</h4>
+            <div class="form-group">
+              <label for="inputNivel">Jornada escolar completa (anual)</label>
+              <input type="number" class="form-control" placeholder="Ingrese cantidad de horas" formControlName="horasPedagogicasConJecAnual">
+            </div>
+            <div class="form-group">
+              <label for="inputProfesorJefe">Jornada escolar completa (semanal)</label>
+              <input type="number" class="form-control" placeholder="Ingrese cantidad de horas" formControlName="horasPedagogicasSinJecAnual">
+            </div>
+            <div class="form-group">
+              <label for="inputSalaCurso">Jornada escolar incompleta (anual)</label>
+              <input type="number" class="form-control" placeholder="Ingrese cantidad de horas" formControlName="horasPedagogicasConJecSemanal">
+            </div>
+            <div class="form-group">
+              <label for="inputTotalAlumnos">Jornada escolar incompleta (semanal)</label>
+              <input type="number" class="form-control" placeholder="Ingrese cantidad de horas" formControlName="horasPedagogicasSinJecSemanal">
+            </div>
+            <input type="reset" class="btn btn-secondary" value="Cancel">
+            <button type="submit" class="btn btn-primary" [disabled]="!rForm.valid">Crear</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-md-2"></div>
+</div>

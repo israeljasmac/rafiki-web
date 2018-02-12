@@ -1,0 +1,42 @@
+<div class="card m-5" style="box-shadow: -2px 2px 2px #888888; ">
+  <div class="card-header">
+    Ficha de Evaluación
+  </div>
+  <div class="table-responsive-md" *ngIf="evaluacion">
+    <table class="table no-border">
+      <tr>
+        <th scope="row">Profesor:</th>
+        <td>{{ evaluacion.evaluacion.profesorAutor }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Creado el:</th>
+        <td>{{ evaluacion.evaluacion.creado_fecha | date:'shortDate' }} a las {{ evaluacion.evaluacion.creado_fecha | date:'shortTime'}}
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Asignatura:</th>
+        <td>{{ evaluacion.evaluacion.asignatura }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Nivel de Aprendizaje:</th>
+        <td>{{ evaluacion.evaluacion.nivelAprendizaje}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Tipo de Ejecución:</th>
+        <td>{{ evaluacion.evaluacion.tipoEjecucion }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Detalles:</th>
+        <td>{{ evaluacion.evaluacion.detalles }}</td>
+      </tr>
+      <tr>
+        <th scope="row">
+          <h5>Retroalimentacion:</h5>
+        </th>
+      </tr>
+      <tr *ngFor=" let retroalimentacion of evaluacion.evaluacion.retroalimentacion ; let i=index">
+        <th scope="row"> ({{i+1}})</th>
+        <td>{{ retroalimentacion }}</td>
+      </tr>
+    </table>
+  </div>

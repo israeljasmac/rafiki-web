@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 offset-sm-2" *ngIf="!evaluacion; else forminfo">
+            <form class="form-horizontal" [formGroup]="rForm" (ngSubmit)="crearEvaluacion(rForm.value)">
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Autor</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" formControlName="profesorAutor">
+                    </div>
+                </div>
+
+                <!-- <div class="form-group">
+                  <label class="control-label col-sm-5">Fecha Creacion</label>
+                  <div class="col-sm-12">
+                      <input class="form-control" type="date" formControlName="creado_fecha">
+                  </div>
+              </div> -->
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Asignatura</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" formControlName="asignatura">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Nivel de Aprendizaje</label>
+                    <div class="col-sm-12">
+                        <select class="form-control col-sm-12" formControlName="nivelAprendizaje">
+                            <option *ngFor="let nivelAprendizaje of nivelesDeAprendizaje" [value]="nivelAprendizaje">{{nivelAprendizaje}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Tipo de Ejecución</label>
+                    <div class="col-sm-12">
+                        <select class="form-control" formControlName="tipoEjecucion">
+                            <option *ngFor="let tipoEjecucion of tiposDeEjecucion" [value]="tipoEjecucion">{{tipoEjecucion}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Detalles</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" formControlName="detalles">
+                    </div>
+                </div>
+
+                <div class="col-sm-12" formArrayName="retroalimentacion">
+                    <h5>Retroalimentacion
+                        <button class="btn btn-secundary col-sm-2 float-right" type="button" (click)="onAddRetro()">
+                            <i class="fas fa-plus-circle"></i> Añadir</button>
+                    </h5>
+                    <br>
+                    <div class="form-group row" *ngFor="let retro of rForm.get('retroalimentacion').controls; let i=index">
+                        <label class="col-sm-1 col-form-label">#{{i+1}}</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control form-control col-sm-12" value="evaluacion.evaluacion.retroalimentacion[i]" [formControlName]="i">
+                        </div>
+                        <button class="btn btn-danger col-sm-1" (click)=removeRetroalimentacion(i)>
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="submit" class="btn btn-primary" value="Crear Evaluacion" [disabled]="!rForm.valid">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Este se ejecutará cuando se registre la nueva evaluacion -->
+<ng-template #forminfo>
+    <div class="form-container">
+        <h2>{{ mensaje }}</h2>
+    </div>
+</ng-template>

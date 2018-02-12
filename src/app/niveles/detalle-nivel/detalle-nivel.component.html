@@ -1,0 +1,58 @@
+<html lang="en">
+<div *ngIf="nivel" id="accordion">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Detalle Nivel </title>
+    <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
+  </head>
+  <div class="card">
+
+
+    <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Detalle Nivel - Sigla: {{ nivel.sigla }}
+            </button>
+        </h5>
+    </div>
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        <div class="table-responsive-md">
+          <table class="table no-border">
+            <thead>
+              <tr>
+                <th scope="row"> Atributo</th>
+                <th scope="row"> Valor</th>
+              </tr>
+            </thead>
+            <tbody class="table-hover">
+              <tr>
+                <th scope="row">ID</th>
+                <td scope="row">{{nivel._id}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Sigla</th>
+                <td scope="row">{{nivel.sigla}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Tipo de nivel </th>
+                <td scope="row">{{nivel.tipo_nivel}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Descripción</th>
+                <td scope="row">{{nivel.descripcion}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Decreto</th>
+                <td scope="row">{{nivel.decreto}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-2"></div>
+  </div>
+
+</div>

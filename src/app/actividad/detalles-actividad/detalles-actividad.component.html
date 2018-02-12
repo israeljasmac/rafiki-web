@@ -1,0 +1,145 @@
+<h1>Detalle de Actividad</h1>
+
+<div id="accordion" *ngIf="actividad">
+
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Actividad
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        <div class="table-responsive-md">
+          <table class="table no-border">
+            <tr>
+              <th scope="row">Pregunta:</th>
+              <td>{{ actividad.actividad.preguntaEnunciado }}</td>
+            </tr>
+
+            <tr>
+              <th scope="row">Alternativas:</th>
+            </tr>
+
+            <tr *ngFor=" let alternativas of actividad.actividad.preguntaAlternativas ; let i=index">
+              <th scope="row"></th>
+              <td>{{ alternativas }}</td>
+            </tr>
+
+            <tr>
+              <th scope="row">Respuesta:</th>
+              <td>{{ actividad.actividad.respuesta}}</td>
+            </tr>
+
+            <tr>
+              <th scope="row">Respuesta(s) de Alternativas:</th>
+            </tr>
+
+            <tr *ngFor=" let alternativas of actividad.actividad.respuestaAlternativas ; let i=index">
+              <th scope="row"></th>
+              <td>{{ alternativas }}</td>
+            </tr>
+
+            <tr>
+              <th scope="row">Respuesta Verdadero y Falso:</th>
+              <td>{{ actividad.actividad.respuestaVerdaderoFalso }}</td>
+            </tr>
+
+            <tr>
+              <th scope="row">Puntaje:</th>
+              <td>{{ actividad.actividad.puntajeTotal}}</td>
+            </tr>
+
+            <tr>
+              <th scope="row">Retroalimentación:</th>
+            </tr>
+
+            <tr *ngFor=" let retroalimentacion of actividad.actividad.retroalimentacion ; let i=index">
+              <th scope="row"></th>
+              <td>{{ retroalimentacion }}</td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Acerca de Actividad
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        <div class="table-responsive-md">
+          <table class="table no-border">
+            <tr>
+              <th scope="row">Asignatura:</th>
+              <td>{{ actividad.actividad.asignatura }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Tema:</th>
+              <td>{{ actividad.actividad.tema}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Subtema:</th>
+              <td>{{ actividad.actividad.subTema }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Tipo de Pregunta:</th>
+              <td>{{ actividad.actividad.tipoPregunta }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Nivel de Dificultad:</th>
+              <td>{{ actividad.actividad.nivelDificultad }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Nivel de Aprendizaje:</th>
+              <td>{{ actividad.actividad.nivelAprendizaje }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Origen de Actividad
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        <div class="table-responsive-md">
+          <table class="table no-border">
+            <tr>
+              <th scope="row">Autor:</th>
+              <td>{{ actividad.actividad.profesorAutor }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Año:</th>
+              <td>{{ actividad.actividad.anhoAcademico}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Semestre:</th>
+              <td>{{ actividad.actividad.semestre }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

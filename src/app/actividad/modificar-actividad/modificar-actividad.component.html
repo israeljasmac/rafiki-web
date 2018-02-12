@@ -1,0 +1,197 @@
+<h1>Editar Actividad</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 offset-sm-2" *ngIf="!tema && actividad; else forminfo">
+            <form class="form-horizontal" [formGroup]="rForm" (ngSubmit)="updateActividad(rForm.value)">
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Asignatura</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" formControlName="asignatura" [value]="actividad.actividad.asignatura">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Tema</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" formControlName="tema" [value]="actividad.actividad.tema">
+                        <br>
+                        <div class="alert alert-danger" role="alert" *ngIf="!rForm.controls['tema'].valid && !rForm.controls['tema'].touched">
+                            Este campo es requerido
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Subtema</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" formControlName="subTema" [value]="actividad.actividad.subTema">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Tipo de Pregunta</label>
+                    <div class="col-sm-12">
+                        <select class="form-control" type="text" formControlName="tipoPregunta">
+                            <option value="Enumeracion">Enumeracion</option>
+                            <option value="Conocimiento especifico">Conocimiento especifico</option>
+                            <option value="Ensayo">Ensayo</option>
+                            <option value="Verdadero y Falso">Verdadero y Falso</option>
+                            <option value="Alternativas">Alternativas</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Nivel de Dificultad</label>
+                    <div class="col-sm-12">
+                        <select class="form-control" type="text" formControlName="nivelDificultad">
+                            <option value="Alta">Alta</option>
+                            <option value="Media">Media</option>
+                            <option value="Baja">Baja</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Nivel de Aprendizaje</label>
+                    <div class="col-sm-12">
+                        <select class="form-control" type="text" formControlName="nivelAprendizaje">
+                            <option value="Recordar">Recordar</option>
+                            <option value="Comprender">Comprender</option>
+                            <option value="Aplicar">Aplicar</option>
+                            <option value="Analizar">Analizar</option>
+                            <option value="Evaluar">Evaluar</option>
+                            <option value="Crear">Crear</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Autor</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" formControlName="profesorAutor" [value]="actividad.actividad.profesorAutor">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Año academico</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="number" formControlName="anhoAcademico" [value]="actividad.actividad.anhoAcademico">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Semestre</label>
+                    <div class="col-sm-12">
+                        <select class="form-control" type="text" formControlName="semestre">
+                            <option value="1">1 Semestre</option>
+                            <option value="2">2 Semestre</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Puntaje total</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="number" formControlName="puntajeTotal" [value]="actividad.actividad.puntajeTotal">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Pregunta</label>
+                    <div class="col-sm-12">
+                        <textarea class="form-control" formControlName="preguntaEnunciado" [value]="actividad.actividad.preguntaEnunciado"></textarea>
+                    </div>
+                </div>
+
+                <div class="col-sm-12" formArrayName="preguntaAlternativas">
+                    <h5>Alternativas
+                        <button class="btn btn-secundary col-sm-2 float-right" type="button" (click)="onAddAlternativas()">
+                            <i class="fas fa-plus-circle"></i> Añadir</button>
+                    </h5>
+                    <br>
+                    <div class="form-group row" *ngFor="let alternativas of rForm.get('preguntaAlternativas').controls; let i=index">
+                        <label class="col-sm-1 col-form-label">#{{i+1}}</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control form-control col-sm-12" value="actividad.actividad.preguntaAlternativas[i]" [formControlName]="i">
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Respuesta</label>
+                    <div class="col-sm-12">
+                        <textarea class="form-control" formControlName="respuesta" [value]="actividad.actividad.respuesta"></textarea>
+                    </div>
+                </div>
+
+                <div class="col-sm-12" formArrayName="respuestaAlternativas">
+                    <h5>Respuesta de Alternativas
+                        <button class="btn btn-secundary col-sm-2 float-right" type="button" (click)="onAddRespuestaAlternativas()">
+                            <i class="fas fa-plus-circle"></i> Añadir</button>
+                    </h5>
+                    <br>
+                    <div class="form-group row" *ngFor="let alternativas of rForm.get('respuestaAlternativas').controls; let i=index">
+                        <label class="col-sm-1 col-form-label">#{{i+1}}</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control form-control col-sm-12" value="actividad.actividad.respuestaAlternativas[i]" [formControlName]="i">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Respuesta verdadero y falso</label>
+                    <div class="col-sm-12">
+
+                        <label>
+                            <input type="radio" name="respuestaVerdaderoFalso" formControlName="respuestaVerdaderoFalso" [value]="true"> Verdadero
+                        </label>
+
+                        <br>
+
+                        <label>
+                            <input type="radio" name="respuestaVerdaderoFalso" formControlName="respuestaVerdaderoFalso" [value]="false"> Falso
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-sm-12" formArrayName="retroalimentacion">
+                    <h5>Retroalimentacion
+                        <button class="btn btn-secundary col-sm-2 float-right" type="button" (click)="onAddRetroalimentacion()">
+                            <i class="fas fa-plus-circle"></i> Añadir</button>
+                    </h5>
+                    <br>
+                    <div class="form-group row" *ngFor="let retro of rForm.get('retroalimentacion').controls; let i=index">
+                        <label class="col-sm-1 col-form-label">#{{i+1}}</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control form-control col-sm-12" value="actividad.actividad.retroalimentacion[i]" [formControlName]="i">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group" align="center">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="submit" class="btn btn-primary" value="Editar Actividad">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Este se ejecutará cuando se registre la nueva organizacion -->
+
+<!--
+<ng-template #forminfo>
+  <div class="form-container">
+      <h1>ERROR</h1>
+  </div>
+</ng-template>
+-->

@@ -1,0 +1,61 @@
+<html lang="en">
+<div id="accordion">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Crear Nivel</title>
+    <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
+  </head>
+  <div class="card">
+
+
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Crear Nivel
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        <form [formGroup]="rForm" (ngSubmit)="postNivel(rForm.value)">
+          <div class="form-group">
+            <label class="control-label col-sm-5" for="inputSigla">Sigla</label>
+            <input type="text" class="form-control" placeholder="Ingrese sigla" formControlName="sigla">
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5" for="inputTipoNivel">Tipo de nivel </label>
+            <select class="form-control" type="text" formControlName="tipo_nivel">
+              <option value="Básica">Básica</option>
+              <option value="Media">Media</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-5" for="inputGrado">Grado </label>
+            <input type="number" class="form-control" placeholder="Ingrese grado" formControlName="grado">
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5" for="inputDescripcion">Descripción</label>
+            <input type="text" class="form-control" placeholder="Añada una descripción" formControlName="descripcion">
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-5" for="inputDecreto">Decreto </label>
+            <select class="form-control" type="text" formControlName="decreto">
+              <option value="BC">Bases Curriculares</option>
+              <option value="MC">Marco Curricular </option>
+              <option value="AC">Ajuste Curricular </option>
+              <option value="FDTP">Formación Diferencial Técnico Profesional </option>
+            </select>
+          </div>
+          
+
+          <input type="reset" class="btn btn-secondary" value="Cancel">
+          <button type="submit" class="btn btn-primary" [disabled]="!rForm.valid">Crear</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-md-2"></div>
+</div>

@@ -3,7 +3,7 @@
     <div class="col-6 col-md-8">
       <div *ngIf="curso; else forminfo">
         <div class="card-header">
-          <h1>Modificar Curso</h1>
+          <h1>Modificar Curso </h1>
           <hr>
           <div class="card-body">
             <form [formGroup]="rForm" (ngSubmit)="updatePut(rForm.value)">

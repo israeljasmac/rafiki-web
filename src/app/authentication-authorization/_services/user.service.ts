@@ -22,8 +22,6 @@ export class UserService {
         return this.http.get('http://localhost:10010/users');
     }
 
-  
-
     getById(id: String) {
         return this.http.get('http://localhost:10010/users/' + id);
     }

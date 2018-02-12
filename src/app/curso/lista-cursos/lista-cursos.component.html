@@ -1,7 +1,7 @@
-<a routerLink="cursos/crear">
+<a routerLink="/cursos/crear-curso">
   <button type="button" class="btn btn-primary">crear-curso</button>
 </a>
-<div *ngIf="curso">
+<div *ngIf="curso" [@animation]="curso.cursos.length">
   <table class="table table-hover">
     <thead>
       <tr align="center">
@@ -14,8 +14,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let curso of curso.cursos" align="center">
-        <th scope="row">1</th>
+      <tr *ngFor="let curso of curso.cursos; let i = index" align="center">
+        <th scope="row">{{i+1}}</th>
         <td>{{ curso.idCurso }}</td>
         <td>{{ curso.nivel }}</td>
         <td>{{ curso.asignatura }}</td>
@@ -25,7 +25,7 @@
         <td>
           <button type="button" class="btn btn-info" routerLink="cursos/{{ curso._id }}/editar"><i class="fas fa-edit"></i> editar </button>
           /
-          <button type="button" class="btn btn-info" routerLink="" (click)="deleteCurso(curso._id)"><i class="fas fa-trash-alt"></i> Eliminar </button>
+          <button type="button" class="btn btn-info" (click)="deleteCurso(curso._id, i)"><i class="fas fa-trash-alt"></i> Eliminar </button>
         </td>
       </tr>
     </tbody>
