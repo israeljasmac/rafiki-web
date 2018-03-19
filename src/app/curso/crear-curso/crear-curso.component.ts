@@ -20,15 +20,17 @@ export class CrearCursoComponent implements OnInit {
   totalAlumnos: Number;
   domain: string = 'http://localhost:10010';
   curso: any;
+  niveles: any;
+  objAprendizajes: any;
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router) {
     this.rForm = formBuilder.group({
-      'idCurso': [null, Validators.required],
-      'nivel': [null, Validators.required],
-      'asignatura': [null, Validators.required],
-      'profesorJefe': [null, Validators.required],
+      'nombreCurso': [null, Validators.required],
       'salaCurso': [null, Validators.required],
-      'totalAlumnos': [null, Validators.required],
+      'detallesCurso': [null, Validators.required],
+      'selectedNivel': [null, Validators.required],
+      'selectedPlanifiacion': [null, Validators.required],
+      // 'totalAlumnos': [null, Validators.required],
       // 'validate': ''
     });
 
@@ -42,14 +44,22 @@ export class CrearCursoComponent implements OnInit {
     // this.salaCurso = post.salaCurso;
     // this.totalAlumnos = post.totalAlumnos;
     console.log(post);
-    this.http.post(`${this.domain}/cursos`, post).subscribe(data =>{
+    this.http.post(`${this.domain}/cursos`, post).subscribe(data => {
       // console.log(data);
       this.curso = data;
       console.log(this.curso);
     });
   }
 
+  getNiveles() {
+    this.http.get(`${this.domain}/niveles`).subscribe(data => {
+      this.niveles = data;
+      console.log(this.niveles);
+    });
+  }
+
   ngOnInit() {
+    this.getNiveles();
   }
 
 }

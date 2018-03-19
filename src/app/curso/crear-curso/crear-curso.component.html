@@ -8,29 +8,30 @@
         <div class="card-body">
           <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
             <div class="form-group">
-              <label for="inputAsignatura">Asignatura</label>
-              <input type="text" class="form-control" placeholder="Ingrese asignatura" formControlName="asignatura">
+              <label for="inputNombreCurso">Nombre del Curso:</label>
+              <input type="text" class="form-control" placeholder="Ingrese un nombre para el curso" formControlName="nombreCurso">
             </div>
             <div class="form-group">
-              <label for="inputSiglaCurso">Sigla Curso</label>
-              <input type="text" class="form-control" placeholder="Ingrese sigla" formControlName="idCurso">
+              <label for="inputSalaCurso">Sala del Curso</label>
+              <input type="number" class="form-control" placeholder="Ingrese una sala para el curso" formControlName="salaCurso">
             </div>
             <div class="form-group">
-              <label for="inputNivel">Nivel</label>
-              <input type="text" class="form-control" placeholder="Ingrese nivel" formControlName="nivel">
+              <label for="inputDetallesCurso">Detalles del Curso</label>
+              <input type="text" class="form-control" placeholder="Ingrese detalles del curso" formControlName="detallesCurso">
             </div>
             <div class="form-group">
-              <label for="inputProfesorJefe">Profesor Jefe</label>
-              <input type="text" class="form-control" placeholder="Ingrese profesor jefe" formControlName="profesorJefe">
+              <label for="inputDetallesCurso">Objetivos de Aprendizaje de la Planificacion del Curso</label>
+              <select class="form-control" [(ngModel)]="selectedPlanifiacion">
+                <option *ngFor="let nivel of niveles.data" [ngValue]="c">{{nivel.sigla}}</option>
+              </select>
             </div>
             <div class="form-group">
-              <label for="inputSalaCurso">Sala del curso</label>
-              <input type="text" class="form-control" placeholder="Ingrese sala del curso" formControlName="salaCurso">
+              <label for="inputDetallesCurso">Nivel de Curso</label>
+              <select class="form-control" [(ngModel)]="selectedNivel">
+                <option *ngFor="let nivel of niveles.data" [ngValue]="c">{{nivel.sigla}}</option>
+              </select>
             </div>
-            <div class="form-group">
-              <label for="inputTotalAlumnos">Total Alumnos</label>
-              <input type="number" class="form-control" placeholder="Ingrese cantidad de alumnos" formControlName="totalAlumnos">
-            </div>
+            <br>
             <input type="reset" class="btn btn-secondary" value="Cancel">
             <button type="submit" class="btn btn-primary" [disabled]="!rForm.valid">Crear</button>
             <!-- <ng-template #forminfo>

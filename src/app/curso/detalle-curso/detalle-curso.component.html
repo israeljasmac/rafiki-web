@@ -2,48 +2,303 @@
   <div class="col-6 col-md-2"></div>
   <div class="col-6 col-md-8">
     <div *ngIf="curso">
-      <div class="card-header">
-        <h1>Informcion del curso</h1>
-        <hr>
-        <div class="card-body">
-          <table style="width:100%">
-            <tr>
-              <th>
-                <h4>Curso:</h4>
-              </th>
-              <td><h4>{{ curso.curso.idCurso }}</h4></td>
-            </tr>
-            <tr>
-              <th>
-                <h4>Nivel:</h4>
-              </th>
-              <td><h4>{{ curso.curso.nivel }}</h4></td>
-            </tr>
-            <tr>
-              <th>
-                <h4>Asignatura:</h4>
-              </th>
-              <td><h4>{{ curso.curso.asignatura }}</h4></td>
-            </tr>
-            <tr>
-              <th>
-                <h4>Profesor Jefe:</h4>
-              </th>
-              <td><h4>{{ curso.curso.profesorJefe }}</h4></td>
-            </tr>
-            <tr>
-              <th>
-                <h4>Sala:</h4>
-              </th>
-              <td><h4>{{ curso.curso.salaCurso}}</h4></td>
-            </tr>
-            <tr>
-              <th>
-                <h4>Alumnos:</h4>
-              </th>
-              <td><h4>{{ curso.curso.totalAlumnos }}</h4></td>
-            </tr>
-          </table>
+      <div *ngFor="let cursos of curso.data">
+        <div id="accordion">
+          <div class="card-header">
+            <h1>Informacion del Curso</h1>
+            <hr>
+            <div class="card-body">
+              <table style="width:100%">
+                <tr>
+                  <th>
+                    <h4>Nombre del Curso:</h4>
+                  </th>
+                  <td>
+                    <h4>{{cursos.nombre}}</h4>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <h4>Sala del Curso:</h4>
+                  </th>
+                  <td>
+                    <h4>{{cursos.salaCurso}}</h4>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <h4>Detalles del Curso:</h4>
+                  </th>
+                  <td>
+                    <h4>{{cursos.detalles}}</h4>
+                  </td>
+                </tr>
+              </table>
+              <div *ngIf="planificacion">
+                <div *ngFor="let planificaciones of planificacion.data">
+                  <div id="heading1">
+                    <h5>
+                      <button class="btn btn-outline-primary btn-lg btn-block" data-toggle="collapse" data-target="#collapse1" aria-expanded="false"
+                        aria-controls="collapseTwo">
+                        Planificacion
+                      </button>
+                    </h5>
+                  </div>
+                  <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion">
+                    <table style="width:100%">
+                      <tr>
+                        <th>
+                          <h4>Detalles:</h4>
+                        </th>
+                        <td>
+                          <h4>{{cursos.planificacion.detalles}}</h4>
+                        </td>
+                      </tr>
+                    </table>
+                    <div>
+                      <h4>objetivo de aprendizaje</h4>
+                      <table style="width:100%">
+                        <tr>
+                          <th>
+                            <h4>Identificador:</h4>
+                          </th>
+                          <td>
+                            <h4>{{planificacion.data.detalles}}</h4>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>
+                            <h4>Rut:</h4>
+                          </th>
+                          <td>
+                            <h4></h4>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>
+                            <h4>E-Mail:</h4>
+                          </th>
+                          <td>
+                            <h4></h4>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div id="heading2">
+                  <h5>
+                    <button class="btn btn-outline-primary btn-lg btn-block" data-toggle="collapse" data-target="#collapse2" aria-expanded="false"
+                      aria-controls="collapseTwo">
+                      Profesores
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion">
+                  <div *ngFor="let profesores of cursos.profesores; let i = index">
+                    <table style="width:100%">
+                      <h5>{{i+1}}</h5>
+                      <tr>
+                        <th>
+                          <h4>Nombre:</h4>
+                        </th>
+                        <td>
+                          <h4>{{profesores.nombre}}</h4>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>
+                          <h4>Rut:</h4>
+                        </th>
+                        <td>
+                          <h4>{{profesores.rut}}</h4>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>
+                          <h4>E-Mail:</h4>
+                        </th>
+                        <td>
+                          <h4>{{profesores.correo}}</h4>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div id="heading3">
+                  <h5>
+                    <button class="btn btn-outline-primary btn-lg btn-block" data-toggle="collapse" data-target="#collapse3" aria-expanded="false"
+                      aria-controls="collapseTwo">
+                      Alumnos
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion">
+                  <div *ngFor="let alumnos of cursos.alumnos; let i = index">
+                    <table style="width:100%">
+                      <h5>{{i+1}}</h5>
+                      <tr>
+                        <th>
+                          <h4>Nombre:</h4>
+                        </th>
+                        <td>
+                          <h4>{{alumnos.nombre}}</h4>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>
+                          <h4>Rut:</h4>
+                        </th>
+                        <td>
+                          <h4>{{alumnos.rut}}</h4>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>
+                          <h4>E-Mail:</h4>
+                        </th>
+                        <td>
+                          <h4>{{alumnos.correo}}</h4>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="nivel">
+                <div id="heading4">
+                  <h5>
+                    <button class="btn btn-outline-primary btn-lg btn-block" data-toggle="collapse" data-target="#collapse4" aria-expanded="false"
+                      aria-controls="collapseTwo">
+                      Nivel
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordion">
+                  <div *ngFor="let niveles of nivel.data">
+                    <table style="width:100%">
+                      <tr>
+                        <th>
+                          <h4>sigla:</h4>
+                        </th>
+                        <td>
+                          <h4>{{niveles.sigla}}</h4>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>
+                          <h4>Tipo de Nivel:</h4>
+                        </th>
+                        <td>
+                          <h4>{{niveles.tipo_nivel}}</h4>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>
+                          <h4>Grado:</h4>
+                        </th>
+                        <td>
+                          <h4>{{niveles.grado}}</h4>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>
+                          <h4>Decreto:</h4>
+                        </th>
+                        <td>
+                          <h4>{{niveles.decreto}}</h4>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>
+                          <h4>Descripcion:</h4>
+                        </th>
+                        <td>
+                          <h4>{{niveles.descripcion}}</h4>
+                        </td>
+                      </tr>
+                    </table>
+                    <br>
+                    <h4>Detalles Asignatura</h4>
+                    <table style="width:100%">
+                      <tr>
+                        <th>
+                          <h4>Identificador:</h4>
+                        </th>
+                        <td>
+                          <h4>{{niveles.oa.identificador}}</h4>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>
+                          <h4>Proposito Formativo:</h4>
+                        </th>
+                        <td>
+                          <h4>{{niveles.asignatura.propositoFormativo}}</h4>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>
+                          <h4>Enfoque:</h4>
+                        </th>
+                        <td>
+                          <h4>{{niveles.asignatura.enfoque}}</h4>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>
+                          <h4>Enfasis:</h4>
+                        </th>
+                        <td>
+                          <h4>{{niveles.asignatura.enfasis}}</h4>
+                        </td>
+                      </tr>
+                    </table>
+                    <br>
+                    <h4>Obejtivos de aprendizaje</h4>
+                    <table style="width:100%">
+                      <tr>
+                        <th>
+                          <h4>nombre:</h4>
+                        </th>
+                        <td>
+                          <h4></h4>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>
+                          <h4>Proposito Formativo:</h4>
+                        </th>
+                        <td>
+                          <h4></h4>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>
+                          <h4>Enfoque:</h4>
+                        </th>
+                        <td>
+                          <h4></h4>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>
+                          <h4>Enfasis:</h4>
+                        </th>
+                        <td>
+                          <h4></h4>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
