@@ -27,6 +27,12 @@ import { ListaObjetivoAprendizajeComponent } from './objetivo-aprendizaje/lista-
 import { DetalleObjetivoAprendizajeComponent } from './objetivo-aprendizaje/detalle-objetivo-aprendizaje/detalle-objetivo-aprendizaje.component';
 import { CrearObjetivoAprendizajeComponent } from './objetivo-aprendizaje/crear-objetivo-aprendizaje/crear-objetivo-aprendizaje.component';
 import { ModificarObjetivoAprendizajeComponent } from './objetivo-aprendizaje/modificar-objetivo-aprendizaje/modificar-objetivo-aprendizaje.component';
+import { ListaCursosComponent } from './curso/lista-cursos/lista-cursos.component';
+import { DetalleCursoComponent } from './curso/detalle-curso/detalle-curso.component';
+import { ListaOrganizacionesComponent } from './organizacion/lista-organizaciones/lista-organizaciones.component';
+import { DetallesOrganizacionComponent } from './organizacion/detalles-organizacion/detalles-organizacion.component';
+import { CrearCursoComponent } from './curso/crear-curso/crear-curso.component';
+
 
 const appRoutes: Routes = [
 
@@ -37,7 +43,15 @@ const appRoutes: Routes = [
   { path: 'aprendizajes/crear', component: CrearObjetivoAprendizajeComponent },
   { path: 'aprendizajes/:id', component: DetalleObjetivoAprendizajeComponent },
   { path: 'aprendizajes/:id/editar', component: ModificarObjetivoAprendizajeComponent },
-
+  // Curso
+  { path: 'cursos', component: ListaCursosComponent },
+  { path: 'cursos/crear', component: CrearCursoComponent },
+  { path: 'cursos/:id', component: DetalleCursoComponent },
+  // Orgnizacion
+  { path: 'organizaciones', component: ListaOrganizacionesComponent },
+  { path: 'organizaciones/:id', component: DetallesOrganizacionComponent },
+  // Asignatura
+  { path: 'asignaturas', component: ListaAsignaturaComponent },
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 
