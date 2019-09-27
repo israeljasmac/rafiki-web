@@ -1,0 +1,41 @@
+<div class="col-sm-offset-2 col-sm-10">
+  <button type="button " class="btn btn-primary" routerLink="crear">Crear Evaluacion</button>
+</div>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 cold-md-12 col-lg-12 col-xl-12">
+      <div class="card-columns" *ngIf="evaluaciones" [@animation]="evaluaciones.evaluaciones.length">
+        <div class="card" *ngFor="let evaluacion of evaluaciones.evaluaciones; let i = index" style="box-shadow: -5px 5px 5px #888888; ">
+          <div class="card-header">
+            <nav class="navbar">
+              #{{i}} evaluacion
+              <ul class="nav nav-pills">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Opciones</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" routerLink="/evaluacion/{{evaluacion._id}}/editar">
+                      <i class="fas fa-edit"></i> Editar</a>
+                    <a class="dropdown-item" (click)="deleteEvaluacion(evaluacion._id, i)">
+                      <i class="fas fa-trash-alt"></i> Eliminar</a>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ evaluacion.asignatura }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Creado por: {{ evaluacion.profesorAutor }}</h6>
+            <p class="card-text">{{ evaluacion.detalles }}</p>
+            <button type="button" class="btn btn-primary" routerLink="/evaluacion/{{evaluacion._id}}">
+              <i class="fas fa-info-circle"></i> Ver Detalles </button>
+          </div>
+          <div class="card-footer text-muted">
+            Creado el {{ evaluacion.creado_fecha | date:'shortDate' }} a las {{ evaluacion.creado_fecha | date:'shortTime' }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

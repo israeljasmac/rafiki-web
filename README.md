@@ -1,27 +1,68 @@
-# RafikiWeb
+# Rafiki Web
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.6.
+## Getting Started
 
-## Development server
+Asistente educativo para gestión de proyectos docentes. Cliente Web para gestionar la transacción de datos. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+### Requerimientos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* npm & node = 8.9.3
+* git
+* angular-cli >= 1.6.6
 
-## Build
+### Instalando
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+1. Instalar Angular CLI
+	
+	npm i -g @angular/cli
+	
+2. Clonar repositorio
+	
+	git clone https://github.com/johannvalenzuela/rafiki-web.git
+	
+3. Instalar dependencias
+	
+	npm install
 
-## Running unit tests
+## Contol de versiones
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### semver
 
-## Running end-to-end tests
+Utilizamos versionado semántico https://semver.org/lang/es/
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Commits
 
-## Further help
+Como guía de estilo utilizamos https://udacity.github.io/git-styleguide/
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### Branches
+
+	* master: última versión disponible para producción
+	* release: candidato a versión de producción
+	* dev: integracion de las funcionalidades
+	* hotfix: corrección de bugs urgentes
+	* #feat: desarrollo de una funcionalidad
+
+## Construido con
+
+* Angular 5
+* Bootstrap 4
+* Font Awesome 5
+
+## Autores
+
+* [Hector Astorga](https://github.com/hastorga) - Contribuidor
+* [Samuel Carrasco](https://github.com/scarrascofuentes) - Contribuidor
+* [Israel Jasma](https://github.com/israeljasmac) - Contribuidor
+* [Israel Ogas](https://github.com/IsraelOgas) - Contribuidor
+* [Johann Valenzuela](https://github.com/IsraelOgas) - Propietario
+
+## Servidor de Desarrollo
+
+    ng serve
+    //ó
+    npm start
+
+## Compilar para producción
+
+	ng build

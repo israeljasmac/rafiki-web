@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-6 col-md-2"></div>
+  <div class="col-6 col-md-8">
+    <div *ngIf="asignatura">
+      <div class="card-header">
+        <h1>Informcion del curso</h1>
+        <hr>
+        <div class="card-body">
+          <table style="width:100%">
+            <tr>
+              <th>
+                <h4>Nombre:</h4>
+              </th>
+              <td><h4>{{asignatura.asignaturas.nombre}}</h4></td>
+            </tr>
+            <tr>
+              <th>
+                <h4>Enfasis:</h4>
+              </th>
+              <td>
+                {{asignatura.asignaturas.enfasis}}
+              </td>
+            </tr>
+            <h3>Horas pedagogicas</h3>
+            <tr>
+              <th>
+                <h4>Jornada escolar Completa (Anual):</h4>
+              </th>
+              <td><h4>{{asignatura.asignaturas.horasPedagogicasConJecAnual}}</h4></td>
+            </tr>
+            <tr>
+              <th>
+                <h4>Jornada escolar Completa (Semanal):</h4>
+              </th>
+              <td><h4>{{asignatura.asignaturas.horasPedagogicasConJecSemanal}}</h4></td>
+            </tr>
+            <tr>
+              <th>
+                <h4>Jornada escolar incompleta (Anual):</h4>
+              </th>
+              <td><h4>{{asignatura.asignaturas.horasPedagogicasSinJecAnual}}</h4></td>
+            </tr>
+            <tr>
+              <th>
+                <h4>Jornada escolar incompleta (Semanal):</h4>
+              </th>
+              <td><h4>{{asignatura.asignaturas.horasPedagogicasSinJecSemanal}}</h4></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-md-2"></div>
+</div>

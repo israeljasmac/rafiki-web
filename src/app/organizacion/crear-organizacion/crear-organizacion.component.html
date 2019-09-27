@@ -1,0 +1,171 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 offset-sm-2" *ngIf="!nombre; else forminfo">
+            <form class="form-horizontal" [formGroup]="rForm" (ngSubmit)="crearOrganizacion(rForm.value)">  
+                <div class="form-group">
+                    <label class="control-label col-sm-5">RBD</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="number" formControlName="rbd">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Nombre</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" formControlName="nombre">
+                        <br>
+                        <div class="alert alert-danger" role="alert" *ngIf="!rForm.controls['nombre'].valid && !rForm.controls['nombre'].touched">
+                            Este campo es requerido
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Descripcion</label>
+                    <div class="col-sm-12">    
+                        <textarea class="form-control" formControlName="descripcion"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Reconocimiento Oficial</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" formControlName="reconocimientoOficial">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Dependencia</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" formControlName="dependencia">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Sostenedor</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" formControlName="sostenedor">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Orientacion Religiosa</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" formControlName="orientacionReligiosa">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Correo</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="email" formControlName="correo">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Telefono</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" formControlName="telefono">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Pagina Web</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="url" formControlName="web">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Director</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" formControlName="director">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Mensualidad</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="number" formControlName="mensualidad">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Numero de vacantes</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="number" formControlName="numVacantes">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Total de alumnos Matriculados</label>
+                        <div class="col-sm-12">
+                        <input class="form-control" type="number" formControlName="totalAlumnosMatriculados">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Promedio de alumnos por curso</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="number" formControlName="promAlumnosCurso">
+                    </div>
+                </div>        
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Puntaje Simce</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="number" formControlName="puntajeSimce">
+                    </div>
+                </div>      
+
+                <!-- Campos donde se obtiene la direccion (calle, region, comuna) -->
+                <h5>Direccion</h5>
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Calle</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" formControlName="direccion.calle">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Region</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" formControlName="direccion.region">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Comuna</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" formControlName="direccion.comuna">
+                    </div>
+                </div>
+
+                <!-- Se obtiene la fecha inicio/cierre postulacion -->
+                <h5>Fecha Postulacion</h5>
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Inicio</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" formControlName="fechaPostulacion.inicio">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-5">Cierre</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" formControlName="fechaPostulacion.cierre">
+                    </div>
+                </div>
+                <div class="form-group"> 
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="submit" class="btn btn-primary" value="Crear Organizacion" [disabled]="!rForm.valid">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Este se ejecutará cuando se registre la nueva organizacion -->
+<ng-template #forminfo>
+    <div class="form-container">
+        <h1>{{ mensaje }}</h1>
+    </div>
+</ng-template>

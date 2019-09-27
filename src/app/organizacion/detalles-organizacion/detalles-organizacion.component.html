@@ -1,0 +1,141 @@
+<!-- 
+  - Falta mostrar los proyectos educativos (Es un array de String dentro de Organizacion)
+-->
+
+<div id="accordion" *ngIf="organizaciones">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          {{ organizaciones.organizacion.nombre }}
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        <div class="table-responsive-md">
+          <table class="table no-border">
+            <tr>
+              <th scope="row">Direccion:</th>
+              <td>{{ organizaciones.organizacion.direccion.calle }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Comuna:</th>
+              <td>{{ organizaciones.organizacion.direccion.comuna }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Region:</th>
+              <td>{{ organizaciones.organizacion.direccion.region }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Correo:</th>
+              <td>{{ organizaciones.organizacion.correo }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Telefono:</th>
+              <td>{{ organizaciones.organizacion.telefono }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Pagina Web:</th>
+              <td>{{ organizaciones.organizacion.web }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Director:</th>
+              <td>{{ organizaciones.organizacion.director }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Sostenedor:</th>
+              <td>{{ organizaciones.organizacion.sostenedor }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Información Institucional
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+        <div class="table-responsive-md">
+          <table class="table no-border">
+            <tr>
+              <th scope="row">Rbd:</th>
+              <td>{{ organizaciones.organizacion.rbd }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Descripcion:</th>
+              <td>{{ organizaciones.organizacion.descripcion}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Reconocimiento Oficial:</th>
+              <td>{{ organizaciones.organizacion.reconocimientoOficial}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Dependencia:</th>
+              <td>{{ organizaciones.organizacion.dependencia }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Matricula total de Alumnos:</th>
+              <td>{{ organizaciones.organizacion.totalAlumnosMatriculados }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Promedio Alumnos por Curso:</th>
+              <td>{{ organizaciones.organizacion.promAlumnosCurso }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Orientacion Religiosa:</th>
+              <td>{{ organizaciones.organizacion.orientacionReligiosa }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Ultimo Puntaje Simce:</th>
+              <td>{{ organizaciones.organizacion.puntajeSimce }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Otros Datos
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+        <div class="table-responsive-md">
+          <table class="table no-border">
+            <tr>
+              <th scope="row">Mensualidad: </th>
+              <td>$ {{ organizaciones.organizacion.mensualidad }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Numero de vacantes:</th>
+              <td>{{ organizaciones.organizacion.numVacantes}}</td>
+            </tr>
+            <br>
+            <h5>Fecha de Postulación</h5>
+            <tr>
+              <th scope="row">Fecha Inicio:</th>
+              <td>{{ organizaciones.organizacion.fechaPostulacion.inicio }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Fecha Cierre :</th>
+              <td>{{ organizaciones.organizacion.fechaPostulacion.cierre }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
